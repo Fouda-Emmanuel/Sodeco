@@ -10,7 +10,10 @@
 	--><a href="../admin/view_unit.php">Manage Unit</a><!--
 	--><a href="../admin/view_category.php">Manage Category</a><!--
 	--><a href="../admin/view_area.php">Manage Area</a><!--
+	--><a href="../admin/view_zone.php">Manage Zone</a><!--
+	--><a href="../admin/view_sector.php">Manage Sector</a><!--
 	--><a href="../admin/change_password.php">Change Password</a>
+	   <a href="../manufacturer/view_notifications.php">Notifications</a> <!-- Add this line -->
 </aside>
 
 </td>

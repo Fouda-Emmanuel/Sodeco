@@ -28,27 +28,15 @@ if(isset($_SESSION['manufacturer_login'])) {
         if(isset($_POST['chkId'])) {
             $chkId = $_POST['chkId'];
             foreach($chkId as $id) {
-                // First, delete invoice items associated with the order
-                $query_deleteInvoiceItems = "DELETE FROM invoice_items WHERE invoice_id IN (SELECT invoice_id FROM invoice WHERE order_id='$id')";
-                $resultInvoiceItems = mysqli_query($con, $query_deleteInvoiceItems);
+                // Update the order status to soft delete
+                $query_softDeleteOrder = "UPDATE orders SET deleted = 1 WHERE order_id='$id'";
+                $result_softDeleteOrder = mysqli_query($con, $query_softDeleteOrder);
                 
-                // Then, delete invoices associated with the order
-                $query_deleteInvoice = "DELETE FROM invoice WHERE order_id='$id'";
-                $resultInvoice = mysqli_query($con, $query_deleteInvoice);
-                
-                // Then, delete order items associated with the order
-                $query_deleteOrderItems = "DELETE FROM order_items WHERE order_id='$id'";
-                $resultOrderItems = mysqli_query($con, $query_deleteOrderItems);
-                
-                // Finally, delete the order itself
-                $query_deleteOrder = "DELETE FROM orders WHERE order_id='$id'";
-                $result = mysqli_query($con, $query_deleteOrder);
-                
-                if(!$result || !$resultInvoice || !$resultInvoiceItems || !$resultOrderItems) {
+                if(!$result_softDeleteOrder) {
                     echo "<script> alert(\"Failed to delete order with ID: $id\"); </script>";
                 }
             }
-            // Refresh the page after deletion
+            // Refresh the page after soft deletion
             header('Refresh:0');
         } else {
             echo "<script> alert(\"Please select orders to delete.\"); </script>";
@@ -56,7 +44,7 @@ if(isset($_SESSION['manufacturer_login'])) {
     }
     
     // Fetch orders
-    $query_selectOrder = "SELECT * FROM orders, retailer, area WHERE orders.retailer_id = retailer.retailer_id AND retailer.area_id = area.area_id ORDER BY approved, status, order_id DESC";
+    $query_selectOrder = "SELECT * FROM orders, retailer, area WHERE orders.retailer_id = retailer.retailer_id AND retailer.area_id = area.area_id AND orders.deleted = 0 ORDER BY approved, status, order_id DESC";
     $result_selectOrder = mysqli_query($con, $query_selectOrder);
 ?>
 
@@ -94,7 +82,9 @@ if(isset($_SESSION['manufacturer_login'])) {
                 <tr>
                     <th><input type="checkbox" onClick="toggle(this)" /></th>
                     <th>Order ID</th>
-                    <th>Scoup</th>
+                    <th>ScoupName</th>
+                    <th>Area</th>
+                    
                     <th>Date</th>
                     <th>Approved Status</th>
                     <th>Order Status</th>
@@ -106,7 +96,9 @@ if(isset($_SESSION['manufacturer_login'])) {
                 <tr>
                     <td><input type="checkbox" name="chkId[]" value="<?php echo $row_selectOrder['order_id']; ?>" /></td>
                     <td><?php echo $row_selectOrder['order_id']; ?></td>
-                    <td><?php echo $row_selectOrder['area_code']; ?></td>
+                    <td><?php echo $row_selectOrder['username']; ?></td>
+                    <td><?php echo $row_selectOrder['area_name']; ?></td>
+                    
                     <td><?php echo date("d-m-Y", strtotime($row_selectOrder['date'])); ?></td>
                     <td>
                         <?php
@@ -166,4 +158,3 @@ if(isset($_SESSION['manufacturer_login'])) {
     header('Location:../index.php');
 }
 ?>
-

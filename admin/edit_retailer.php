@@ -54,7 +54,7 @@
 				if($username != null && $areacode != null && $phone != null) {
 					$query_UpdateRetailer = "UPDATE retailer SET username='$username',address='$address',area_id='$areacode',phone='$phone',email='$email' WHERE retailer_id='$id'";
 					if(mysqli_query($con,$query_UpdateRetailer)) {
-						echo "<script> alert(\"Retailer Updated Successfully\"); </script>";
+						echo "<script> alert(\"Scoup Updated Successfully\"); </script>";
 						header('Refresh:0;url=view_retailer.php');
 					}
 					else {

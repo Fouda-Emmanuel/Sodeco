@@ -44,11 +44,11 @@
 			if($name != null && $phone != null) {
 					$query_updateMan = "UPDATE manufacturer SET man_name='$name',man_email='$email',man_phone='$phone' WHERE man_id='$id'";
 					if(mysqli_query($con,$query_updateMan)) {
-						echo "<script> alert(\"Manufacturer Updated Successfully\"); </script>";
+						echo "<script> alert(\"H-O-S Updated Successfully\"); </script>";
 						header("Refresh:0");
 					}
 					else {
-						$requireErr = "Updating Manufacturer Failed";
+						$requireErr = "Updating H-O-S Failed";
 					}
 				}
 				else {

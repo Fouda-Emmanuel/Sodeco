@@ -48,7 +48,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Add Unit </title>
+	<title> Add Area </title>
 	<link rel="stylesheet" href="../includes/main_style.css" >
 </head>
 <body>
@@ -58,7 +58,7 @@
 		include("../includes/aside_admin.inc.php");
 	?>
 	<section>
-		<h1>Add Unit</h1>
+		<h1>Add Area</h1>
 		<form action="" method="POST" class="form">
 		<ul class="form-list">
 		<li>

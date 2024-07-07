@@ -131,7 +131,7 @@
 		<div class="input-box"> <input type="text" name="txtOrderId" id="txtOrderId" style="display:none;" /> </div>
 		<div class="input-box">
 		<select name="cmbRetailer" id="cmbRetailer" style="display:none;">
-			<option value="" disabled selected>-- Select Retailer --</option>
+			<option value="" disabled selected>-- Select Scoup --</option>
 			<?php while($rowSelectRetailer = mysqli_fetch_array($resultSelectRetailer)) { ?>
 			<option value="<?php echo $rowSelectRetailer['retailer_id']; ?>"><?php echo $rowSelectRetailer['area_code']." (".$rowSelectRetailer['area_name'].")"; ?></option>
 			<?php } ?>

@@ -134,7 +134,7 @@
 		<li>
 			<div class="label-block"> <label for="product:stock">Stock Management</label> </div>
 			<input type="radio" name="rdbStock" value="1">Enable
-			<input type="radio" name="rdbStock" value="2">Disable
+			<!--<input type="radio" name="rdbStock" value="2">Disable -->
 		</li>
 		<li>
 			<div class="label-block"> <label for="product:description">Description</label> </div>

@@ -46,7 +46,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Update Category </title>
+	<title> Update Area </title>
 	<link rel="stylesheet" href="../includes/main_style.css" >
 </head>
 <body>

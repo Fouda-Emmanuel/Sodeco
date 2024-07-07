@@ -53,7 +53,7 @@
 			<td> <?php echo $rowSelectInvoice['order_id']; ?> </td>
 		</tr>
 		<tr>
-			<td><b> Retailer: </b></td>
+			<td><b> Scoup: </b></td>
 			<td> <?php echo $rowSelectInvoice['area_code']; ?> </td>
 		</tr>
 		<tr>

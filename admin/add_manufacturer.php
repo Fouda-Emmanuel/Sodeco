@@ -60,7 +60,7 @@
 				if($name != null && $email != null && $username != null && $password != null) {
 					$query_addManufacturer = "INSERT INTO manufacturer(man_name,man_email,man_phone,username,password) VALUES('$name','$email','$phone','$username','$password')";
 					if(mysqli_query($con,$query_addManufacturer)) {
-						echo "<script> alert(\"Manufacturer Added Successfully\"); </script>";
+						echo "<script> alert(\"H-O-S Added Successfully\"); </script>";
 						header('Refresh:0');
 					}
 					else {
@@ -83,7 +83,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Add Manufacturer </title>
+	<title> Add H-O-S </title>
 	<link rel="stylesheet" href="../includes/main_style.css" >
 </head>
 <body>

@@ -43,7 +43,7 @@
 	?>
 	<section>
 	<div id="divToPrint" style="clear:both;" >
-		<h1 style="text-align:center;">Sales Invoice</h1>
+		<h1 style="text-align:center;">Sales(On Credit) Invoice</h1>
 		<table class="table_infoFormat">
 		<tr>
 			<td><b> Invoice No: </b></td>

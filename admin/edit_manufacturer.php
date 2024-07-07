@@ -55,7 +55,7 @@
 				if($name != null && $email != null && $username != null) {
 					$query_UpdateMan = "UPDATE manufacturer SET man_name='$name',man_email='$email',man_phone='$phone',username='$username' WHERE man_id='$id'";
 					if(mysqli_query($con,$query_UpdateMan)) {
-						echo "<script> alert(\"Manufacturer Details Updated Successfully\"); </script>";
+						echo "<script> alert(\"H-O-S Details Updated Successfully\"); </script>";
 						header('Refresh:0;url=view_manufacturer.php');
 					}
 					else {

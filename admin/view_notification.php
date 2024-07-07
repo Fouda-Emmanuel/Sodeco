@@ -3,15 +3,14 @@ require("../includes/config.php");
 include("../includes/validate_data.php");
 session_start();
 
-if (isset($_SESSION['manufacturer_login'])) {
-    if ($_SESSION['manufacturer_login'] == true && isset($_SESSION['manufacturer_id'])) {
-        $manufacturer_id = $_SESSION['manufacturer_id'];
+if (isset($_SESSION['admin_login'])) {
+    if ($_SESSION['admin_login'] == true && isset($_SESSION['admin_id'])) {
+        $admin_id = $_SESSION['admin_id'];
 
         // Handle delete notification request
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_notification_id'])) {
             $notification_id = $_POST['delete_notification_id'];
-            // Ensure the correct column name is used here
-            $query_deleteNotification = "DELETE FROM notifications WHERE notification_id = '$notification_id' AND recipient_id = '$manufacturer_id'";
+            $query_deleteNotification = "DELETE FROM notifications WHERE notification_id = '$notification_id'";
             if (mysqli_query($con, $query_deleteNotification)) {
                 $success_message = "Notification deleted successfully.";
             } else {
@@ -19,8 +18,8 @@ if (isset($_SESSION['manufacturer_login'])) {
             }
         }
 
-        // Fetch notifications for the manufacturer
-        $query_selectNotifications = "SELECT * FROM notifications WHERE recipient_id = '$manufacturer_id' ORDER BY created_at DESC";
+        // Fetch notifications for the admin
+        $query_selectNotifications = "SELECT * FROM notifications ORDER BY created_at DESC";
         $result_selectNotifications = mysqli_query($con, $query_selectNotifications);
     } else {
         header('Location: ../index.php');
@@ -52,8 +51,8 @@ if (isset($_SESSION['manufacturer_login'])) {
 <body>
     <?php
         include("../includes/header.inc.php");
-        include("../includes/nav_manufacturer.inc.php");
-        include("../includes/aside_manufacturer.inc.php");
+        include("../includes/nav_admin.inc.php");
+        include("../includes/aside_admin.inc.php");
     ?>
     <section>
         <h1>Notifications</h1>
